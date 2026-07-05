@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrideSec</title>
+
   <style>
     body {
       margin: 0;
@@ -21,6 +24,7 @@
     nav {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       max-width: 1000px;
       margin: auto;
     }
@@ -35,6 +39,11 @@
       color: white;
       margin-left: 20px;
       text-decoration: none;
+      transition: .2s;
+    }
+
+    .links a:hover {
+      color: #c084fc;
     }
 
     .content {
@@ -53,10 +62,14 @@
       margin: 20px 0;
     }
 
+    h2 {
+      margin-top: 0;
+    }
+
     p {
       color: #ddd6fe;
       font-size: 20px;
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .buttons a {
@@ -67,6 +80,7 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
+      transition: .2s;
     }
 
     .primary {
@@ -74,9 +88,17 @@
       color: white;
     }
 
+    .primary:hover {
+      background: #a855f7;
+    }
+
     .secondary {
       border: 1px solid #9333ea;
       color: white;
+    }
+
+    .secondary:hover {
+      background: rgba(147,51,234,.15);
     }
 
     .section {
@@ -85,9 +107,11 @@
       padding: 40px 0;
     }
 
-    .about, .certs {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(192,132,252,0.3);
+    .about,
+    .certs,
+    .contact {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(192,132,252,.3);
       border-radius: 16px;
       padding: 24px;
       margin-bottom: 20px;
@@ -109,68 +133,132 @@
       font-size: 14px;
     }
 
+    .contact a {
+      color: #c084fc;
+      text-decoration: none;
+    }
+
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
     footer {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 0;
+      text-align: center;
+      padding: 40px;
       color: #a78bfa;
       font-size: 14px;
     }
 
     @media (max-width: 800px) {
-      h1 { font-size: 42px; }
-      .links { display: none; }
+      h1 {
+        font-size: 42px;
+      }
+
+      .links {
+        display: none;
+      }
+
+      p {
+        font-size: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="hero">
-    <nav>
-      <div class="logo">BrideSec</div>
-      <div class="links">
-        <a href="#about">About</a>
-        <a href="#certifications">Certifications</a>
-        <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
-      </div>
-    </nav>
 
-    <div class="content">
-      <div class="tag">CYBERSECURITY • CTFS • SECURITY RESEARCH</div>
-      <h1>Security through curiosity.</h1>
+<div class="hero">
+
+  <nav>
+    <div class="logo">BrideSec</div>
+
+    <div class="links">
+      <a href="#about">About</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
+    </div>
+  </nav>
+
+  <div class="content">
+
+    <div class="tag">
+      CYBERSECURITY • CTFS • SECURITY RESEARCH
+    </div>
+
+    <h1>Security through curiosity.</h1>
+
+    <p>
+      BrideSec is a personal cybersecurity site dedicated to documenting
+      practical learning through CTFs, labs, research projects,
+      and real-world security experience.
+    </p>
+
+    <div class="buttons">
+      <a class="primary" href="#about">About</a>
+      <a class="secondary" href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+
+  <div class="section">
+
+    <div class="about" id="about">
+      <h2>About</h2>
+
       <p>
-        BrideSec is my personal cybersecurity site where I document what I’m learning,
-        building, and researching through CTFs, labs, and security fundamentals.
+        I'm a recent graduate with degrees in Cybersecurity and Computer Science,
+        focused on developing practical security expertise through hands-on labs,
+        CTFs, research projects, and real-world experience.
+        My interests include incident response, offensive security,
+        vulnerability management, digital forensics, and making
+        complex cybersecurity concepts easy to understand.
+      </p>
+    </div>
+
+    <div class="certs" id="certifications">
+      <h2>Certifications</h2>
+
+      <ul class="cert-list">
+        <li>GIAC Certified Incident Handler (GCIH)</li>
+        <li>CompTIA Security+</li>
+        <li>CompTIA PenTest+</li>
+        <li>GIAC Foundational Cybersecurity Technologies (GFACT)</li>
+      </ul>
+    </div>
+
+    <div class="contact" id="contact">
+      <h2>Contact</h2>
+
+      <p>
+        Questions, collaboration opportunities, or professional inquiries are always welcome.
       </p>
 
-      <div class="buttons">
-        <a class="primary" href="#about">About Me</a>
-        <a class="secondary" href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
-      </div>
+      <p>
+        📧
+        <a href="mailto:contact@bridesec.com">
+          contact@bridesec.com
+        </a>
+      </p>
+
+      <p>
+        💼
+        <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">
+          LinkedIn
+        </a>
+      </p>
+
     </div>
 
-    <div class="section">
-      <div class="about" id="about">
-        <h2>About Me</h2>
-        <p>
-       I'm a recent graduate with degrees in Cybersecurity and Computer Science, focused on developing practical security expertise through hands-on labs, CTFs, research projects, and real-world experience. My interests include incident response, offensive security, vulnerability management, digital forensics, and making complex cybersecurity concepts easy to understand.
-        </p>
-      </div>
-
-      <div class="certs" id="certifications">
-        <h2>Certifications</h2>
-        <ul class="cert-list">
-          <li>GIAC Certified Incident Handler (GCIH)</li>
-          <li>CompTIA Security+</li>
-          <li>CompTIA PenTest+</li>
-          <li>GIAC Foundational Cybersecurity Technologies (GFACT)</li>
-        </ul>
-      </div>
-    </div>
-
-    <footer>
-      BrideSec © 2026
-    </footer>
   </div>
+
+  <footer>
+    © 2026 BrideSec
+  </footer>
+
+</div>
+
 </body>
 </html>
