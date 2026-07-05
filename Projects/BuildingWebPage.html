@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Building a Website with GitHub Pages | BrideSec</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#05020a;
+    color:white;
+}
+
+.page{
+    min-height:100vh;
+    padding:40px;
+    background:
+        radial-gradient(circle at top right,#6d28d9,transparent 35%),
+        radial-gradient(circle at bottom left,#4c1d95,transparent 30%),
+        #05020a;
+}
+
+nav{
+    max-width:950px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#c084fc;
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.nav-links{
+    display:flex;
+    gap:22px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:#c084fc;
+}
+
+.article{
+    max-width:950px;
+    margin:80px auto 40px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(192,132,252,.25);
+    border-radius:18px;
+    padding:38px;
+}
+
+.tag{
+    color:#c084fc;
+    font-weight:bold;
+    letter-spacing:2px;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+h1{
+    font-size:48px;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+h2{
+    margin-top:40px;
+    margin-bottom:14px;
+    font-size:28px;
+}
+
+p,
+li{
+    color:#ddd6fe;
+    font-size:18px;
+    line-height:1.7;
+}
+
+ul,
+ol{
+    margin-left:24px;
+    margin-top:12px;
+}
+
+li{
+    margin-bottom:8px;
+}
+
+a{
+    color:#c084fc;
+}
+
+code{
+    background:rgba(0,0,0,.45);
+    color:#f3e8ff;
+    padding:3px 7px;
+    border-radius:6px;
+}
+
+pre{
+    background:rgba(0,0,0,.45);
+    color:#f3e8ff;
+    padding:16px;
+    border-radius:12px;
+    overflow-x:auto;
+    margin:16px 0;
+}
+
+.note-box{
+    margin-top:20px;
+    padding:18px;
+    border-left:4px solid #9333ea;
+    background:rgba(147,51,234,.12);
+    border-radius:10px;
+}
+
+footer{
+    max-width:950px;
+    margin:50px auto 0;
+    padding-top:25px;
+    border-top:1px solid rgba(192,132,252,.2);
+    display:flex;
+    justify-content:space-between;
+    color:#a78bfa;
+}
+
+footer a{
+    color:#c084fc;
+    text-decoration:none;
+}
+
+footer a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:800px){
+    .page{
+        padding:25px;
+    }
+
+    .article{
+        padding:26px;
+        margin-top:50px;
+    }
+
+    h1{
+        font-size:36px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    footer{
+        flex-direction:column;
+        gap:12px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<nav>
+    <a class="logo" href="/">BrideSec</a>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/#certifications">Certifications</a>
+        <a href="/#contact">Contact</a>
+        <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
+    </div>
+</nav>
+
+<article class="article">
+
+<div class="tag">PROJECT • GITHUB PAGES • WEB</div>
+
+<h1>Building a Website with GitHub Pages</h1>
+
+<p>
+Having a personal website is a great way to showcase projects, publish technical writing,
+document learning, and create a central place for professional work. GitHub Pages makes this
+possible without needing to manage servers or pay for traditional hosting.
+</p>
+
+<h2>Why Build a Website?</h2>
+
+<p>
+Many job applications include an optional website field. A personal website gives you a place
+to share more than what can fit on a resume. It can include projects, certifications, blog posts,
+writeups, contact information, and anything else that helps show your growth and interests.
+</p>
+
+<p>
+For cybersecurity students, recent graduates, and professionals, a website can become a public
+portfolio that shows consistent learning and hands-on experience.
+</p>
+
+<h2>Choosing GitHub Pages</h2>
+
+<p>
+GitHub Pages is a strong choice for a simple personal website because it is free, reliable,
+and built around Git. Since the site is static, it can be hosted directly from a GitHub repository.
+Updates are made by editing files and committing changes.
+</p>
+
+<p>
+GitHub Pages also supports custom domains, which makes it possible to replace the default
+<code>github.io</code> address with a more professional domain name.
+</p>
+
+<h2>Creating the Repository</h2>
+
+<ol>
+    <li>Sign in to GitHub.</li>
+    <li>Click <strong>+ → New repository</strong>.</li>
+    <li>Name the repository <code>yourusername.github.io</code>.</li>
+    <li>Set the repository to <strong>Public</strong>.</li>
+    <li>Click <strong>Create repository</strong>.</li>
+    <li>Create an <code>index.html</code> file in the root of the repository.</li>
+    <li>Add your homepage HTML.</li>
+    <li>Commit the changes.</li>
+    <li>Go to <strong>Settings → Pages</strong>.</li>
+    <li>Set the source to <strong>Deploy from a branch</strong>.</li>
+    <li>Select the <strong>main</strong> branch and the <strong>/(root)</strong> folder.</li>
+    <li>Save the changes.</li>
+</ol>
+
+<p>
+After GitHub finishes publishing, the site will be available at:
+</p>
+
+<pre>https://yourusername.github.io</pre>
+
+<h2>Buying a Domain</h2>
+
+<p>
+GitHub Pages provides a free domain, but buying a custom domain gives the site a more
+professional appearance. A domain can be purchased from registrars such as Namecheap,
+Cloudflare, Porkbun, Google Domains alternatives, or other domain providers.
+</p>
+
+<p>
+After purchasing a domain, the next step is connecting it to GitHub Pages through DNS records.
+</p>
+
+<h2>Connecting the Domain</h2>
+
+<p>
+To connect a custom domain, open the domain's DNS settings and configure the records GitHub
+requires. For an apex domain, GitHub Pages uses four A records. For the <code>www</code> subdomain,
+a CNAME record points to the GitHub Pages address.
+</p>
+
+<p>
+GitHub's official guide explains the current required records:
+</p>
+
+<p>
+<a href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site" target="_blank">
+Managing a custom domain for GitHub Pages
+</a>
+</p>
+
+<div class="note-box">
+<p>
+DNS changes may take time to update. Sometimes the site works within a few minutes,
+but it can also take longer depending on DNS propagation.
+</p>
+</div>
+
+<p>
+Once the DNS records are configured, return to the repository's <strong>Settings → Pages</strong>
+section and enter the custom domain. GitHub will check the DNS records and allow HTTPS once
+verification is complete.
+</p>
+
+<h2>Setting Up a Contact Email</h2>
+
+<p>
+Owning a domain also makes it possible to create professional email addresses such as:
+</p>
+
+<pre>contact@yourdomain.com</pre>
+
+<p>
+A dedicated mailbox is not always necessary. Many domain registrars offer free email forwarding,
+which allows messages sent to a domain email address to forward directly to an existing inbox.
+</p>
+
+<h2>Lessons Learned</h2>
+
+<p>
+Hosting a simple static website does not have to be expensive or complicated. With GitHub Pages,
+a custom domain, and basic DNS records, it is possible to build a professional site that is easy to
+maintain and grow over time.
+</p>
+
+<p>
+The biggest benefit is having one central place to document work, publish projects, and build a
+portfolio that can improve over time.
+</p>
+
+</article>
+
+<footer id="contact">
+    <div>© 2026 BrideSec</div>
+    <div>
+        <a href="mailto:contact@bridesec.com">contact@bridesec.com</a>
+    </div>
+</footer>
+
+</div>
+
+</body>
+</html>
