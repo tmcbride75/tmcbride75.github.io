@@ -1,260 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrideSec</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrideSec</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #05020a;
-      color: white;
-    }
+<style>
 
-    .hero {
-      min-height: 100vh;
-      padding: 40px;
-      background:
-        radial-gradient(circle at top right, #6d28d9, transparent 35%),
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#05020a;
+    color:white;
+}
+
+.hero{
+    min-height:100vh;
+    padding:40px;
+    background:
+        radial-gradient(circle at top right,#6d28d9,transparent 35%),
+        radial-gradient(circle at bottom left,#4c1d95,transparent 30%),
         #05020a;
-    }
+}
 
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1000px;
-      margin: auto;
-    }
+nav{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
 
-    .logo {
-      color: #c084fc;
-      font-weight: bold;
-      font-size: 24px;
-    }
+.logo{
+    color:#c084fc;
+    font-size:26px;
+    font-weight:bold;
+}
 
-    .links a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      transition: .2s;
-    }
+.links{
+    display:flex;
+    gap:24px;
+}
 
-    .links a:hover {
-      color: #c084fc;
-    }
+.links a{
+    color:white;
+    text-decoration:none;
+    transition:.2s;
+}
 
-    .content {
-      max-width: 900px;
-      margin: 120px auto 60px;
-    }
+.links a:hover{
+    color:#c084fc;
+}
 
-    .tag {
-      color: #c084fc;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
+.content{
+    max-width:900px;
+    margin:120px auto 70px;
+}
 
-    h1 {
-      font-size: 64px;
-      margin: 20px 0;
-    }
+.tag{
+    color:#c084fc;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
 
-    h2 {
-      margin-top: 0;
-    }
+h1{
+    font-size:64px;
+    margin-bottom:25px;
+}
 
-    p {
-      color: #ddd6fe;
-      font-size: 20px;
-      line-height: 1.6;
-    }
+.content p{
+    color:#ddd6fe;
+    font-size:20px;
+    line-height:1.7;
+}
 
-    .buttons a {
-      display: inline-block;
-      margin-right: 12px;
-      margin-top: 20px;
-      padding: 14px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: .2s;
-    }
+.buttons{
+    margin-top:35px;
+}
 
-    .primary {
-      background: #9333ea;
-      color: white;
-    }
+.buttons a{
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:10px;
+    margin-right:14px;
+    text-decoration:none;
+    transition:.2s;
+    font-weight:bold;
+}
 
-    .primary:hover {
-      background: #a855f7;
-    }
+.primary{
+    background:#9333ea;
+    color:white;
+}
 
-    .secondary {
-      border: 1px solid #9333ea;
-      color: white;
-    }
+.primary:hover{
+    background:#a855f7;
+}
 
-    .secondary:hover {
-      background: rgba(147,51,234,.15);
-    }
+.secondary{
+    border:1px solid #9333ea;
+    color:white;
+}
 
-    .section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 0;
-    }
+.secondary:hover{
+    background:rgba(147,51,234,.15);
+}
 
-    .about,
-    .certs,
-    .contact {
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(192,132,252,.3);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-    }
+.section{
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:24px;
+}
 
-    .cert-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding: 0;
-      list-style: none;
-    }
+.about,
+.certs,
+.notes{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(192,132,252,.25);
+    border-radius:18px;
+    padding:28px;
+}
 
-    .cert-list li {
-      border: 1px solid #9333ea;
-      border-radius: 999px;
-      padding: 8px 12px;
-      color: #f3e8ff;
-      font-size: 14px;
-    }
+.about p{
+    color:#ddd6fe;
+    line-height:1.8;
+    margin-top:18px;
+}
 
-    .contact a {
-      color: #c084fc;
-      text-decoration: none;
-    }
+.cert-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:18px;
+}
 
-    .contact a:hover {
-      text-decoration: underline;
-    }
+.cert-list li{
+    border:1px solid #9333ea;
+    border-radius:999px;
+    padding:10px;
+    text-align:center;
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #a78bfa;
-      font-size: 14px;
-    }
+.notes{
+    max-width:1100px;
+    margin:30px auto;
+}
 
-    @media (max-width: 800px) {
-      h1 {
-        font-size: 42px;
-      }
+.notes p{
+    color:#ddd6fe;
+    margin:15px 0 25px;
+}
 
-      .links {
-        display: none;
-      }
+.post-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
 
-      p {
-        font-size: 18px;
-      }
-    }
-  </style>
+.post-card{
+    display:block;
+    text-decoration:none;
+    color:white;
+    padding:22px;
+    border-radius:16px;
+    border:1px solid rgba(147,51,234,.3);
+    background:rgba(0,0,0,.25);
+    transition:.25s;
+}
+
+.post-card:hover{
+    transform:translateY(-4px);
+    border-color:#c084fc;
+}
+
+.post-date{
+    color:#c084fc;
+    font-size:13px;
+    font-weight:bold;
+    letter-spacing:1px;
+}
+
+.post-card h3{
+    margin:12px 0;
+}
+
+.post-card p{
+    color:#ddd6fe;
+    line-height:1.6;
+}
+
+footer{
+    margin-top:70px;
+    border-top:1px solid rgba(192,132,252,.2);
+    background:rgba(255,255,255,.03);
+}
+
+.footer-content{
+    max-width:1100px;
+    margin:auto;
+    padding:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.footer-links{
+    display:flex;
+    gap:20px;
+}
+
+.footer-links a{
+    color:#c084fc;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+@media(max-width:900px){
+
+.section{
+grid-template-columns:1fr;
+}
+
+.links{
+display:none;
+}
+
+h1{
+font-size:44px;
+}
+
+.footer-content{
+flex-direction:column;
+gap:18px;
+text-align:center;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
 <div class="hero">
 
-  <nav>
-    <div class="logo">BrideSec</div>
+<nav>
 
-    <div class="links">
-      <a href="#about">About</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-      <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
-    </div>
-  </nav>
+<div class="logo">
+BrideSec
+</div>
 
-  <div class="content">
+<div class="links">
+<a href="#about">About</a>
+<a href="#certifications">Certifications</a>
+<a href="#notes">Notes</a>
+<a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">LinkedIn</a>
+</div>
 
-    <div class="tag">
-      CYBERSECURITY • CTFS • SECURITY RESEARCH
-    </div>
+</nav>
 
-    <h1>Security through curiosity.</h1>
+<div class="content">
 
-    <p>
-      BrideSec is a personal cybersecurity site dedicated to documenting
-      practical learning through CTFs, labs, research projects,
-      and real-world security experience.
-    </p>
+<div class="tag">
+CYBERSECURITY • CTFS • SECURITY RESEARCH
+</div>
 
-    <div class="buttons">
-      <a class="primary" href="#about">About</a>
-      <a class="secondary" href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">
-        LinkedIn
-      </a>
-    </div>
+<h1>
+Security through curiosity.
+</h1>
 
-  </div>
+<p>
+BrideSec is a personal cybersecurity site dedicated to documenting practical learning through CTFs, labs, research projects, and real-world security experience.
+</p>
 
-  <div class="section">
+<div class="buttons">
 
-    <div class="about" id="about">
-      <h2>About</h2>
+<a class="primary" href="#notes">
+Latest Notes
+</a>
 
-      <p>
-        I'm a recent graduate with degrees in Cybersecurity and Computer Science,
-        focused on developing practical security expertise through hands-on labs,
-        CTFs, research projects, and real-world experience.
-        My interests include incident response, offensive security,
-        vulnerability management, digital forensics, and making
-        complex cybersecurity concepts easy to understand.
-      </p>
-    </div>
+<a class="secondary"
+href="https://www.linkedin.com/in/tyler-jw-mcbride/"
+target="_blank">
+LinkedIn
+</a>
 
-    <div class="certs" id="certifications">
-      <h2>Certifications</h2>
+</div>
 
-      <ul class="cert-list">
-        <li>GIAC Certified Incident Handler (GCIH)</li>
-        <li>CompTIA Security+</li>
-        <li>CompTIA PenTest+</li>
-        <li>GIAC Foundational Cybersecurity Technologies (GFACT)</li>
-      </ul>
-    </div>
+</div>
 
-    <div class="contact" id="contact">
-      <h2>Contact</h2>
+<div class="section">
 
-      <p>
-        Questions, collaboration opportunities, or professional inquiries are always welcome.
-      </p>
+<div class="about" id="about">
 
-      <p>
-        <a href="mailto:contact@bridesec.com">
-          contact@bridesec.com
-        </a>
-      </p>
+<h2>About</h2>
 
-      <p>
-        <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">
-          LinkedIn
-        </a>
-      </p>
+<p>
+I'm a recent graduate with degrees in Cybersecurity and Computer Science, focused on developing practical security expertise through hands-on labs, CTFs, research projects, and real-world experience. My interests include incident response, offensive security, vulnerability management, digital forensics, and making complex cybersecurity concepts easy to understand.
+</p>
 
-    </div>
+</div>
 
-  </div>
+<div class="certs" id="certifications">
 
-  <footer>
-    © 2026 BrideSec
-  </footer>
+<h2>Certifications</h2>
+
+<ul class="cert-list">
+<li>GIAC Certified Incident Handler (GCIH)</li>
+<li>CompTIA Security+</li>
+<li>CompTIA PenTest+</li>
+<li>GIAC Foundational Cybersecurity Technologies (GFACT)</li>
+</ul>
+
+</div>
+
+</div>
+
+<div class="notes" id="notes">
+
+<h2>Latest Notes</h2>
+
+<p>
+Practical writeups, project updates, and cybersecurity lessons learned.
+</p>
+
+<div class="post-grid">
+
+<a class="post-card" href="notes/github-pages.html">
+
+<div class="post-date">
+COMING SOON
+</div>
+
+<h3>
+How I Built BrideSec with GitHub Pages
+</h3>
+
+<p>
+From purchasing a domain to deploying with GitHub Pages and setting up a professional cybersecurity website.
+</p>
+
+</a>
+
+</div>
+
+</div>
+
+<footer>
+
+<div class="footer-content">
+
+<div>
+© 2026 BrideSec
+</div>
+
+<div class="footer-links">
+
+<a href="mailto:contact@bridesec.com">
+contact@bridesec.com
+</a>
+
+<a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank">
+LinkedIn
+</a>
+
+</div>
+
+</div>
+
+</footer>
 
 </div>
 
