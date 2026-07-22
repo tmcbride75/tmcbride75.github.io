@@ -3,15 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<meta
-    name="description"
-    content="How I passed the CompTIA CySA+ exam with minimal dedicated study time by relying on practical cybersecurity experience, CVSS knowledge, and practice questions."
->
+<meta name="description" content="How practical cybersecurity experience, CVSS knowledge, and 70 practice questions helped me pass the CompTIA CySA+ exam.">
+<meta name="theme-color" content="#07030d">
 
 <title>Passing CySA+ With Minimal Study Time | BrideSec</title>
 
 <style>
+:root{
+    --background:#05020a;
+    --surface:rgba(255,255,255,.055);
+    --surface-dark:rgba(5,2,10,.62);
+    --border:rgba(192,132,252,.23);
+    --purple:#c084fc;
+    --purple-light:#e9d5ff;
+    --purple-dark:#9333ea;
+    --text:#faf7ff;
+    --muted:#d8cbea;
+    --warning:#fbbf24;
+}
+
 *{
     margin:0;
     padding:0;
@@ -23,668 +33,559 @@ html{
 }
 
 body{
+    min-height:100vh;
     font-family:Arial,Helvetica,sans-serif;
-    background:#05020a;
-    color:white;
+    background:var(--background);
+    color:var(--text);
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+        radial-gradient(circle at 90% 3%,rgba(109,40,217,.55),transparent 31rem),
+        radial-gradient(circle at 8% 78%,rgba(76,29,149,.38),transparent 28rem),
+        linear-gradient(180deg,#08030f 0%,#05020a 100%);
+}
+
+a{
+    color:var(--purple);
+}
+
+a:hover{
+    color:var(--purple-light);
 }
 
 .page{
-    min-height:100vh;
-    padding:40px;
-    background:
-        radial-gradient(circle at top right,#6d28d9,transparent 35%),
-        radial-gradient(circle at bottom left,#4c1d95,transparent 30%),
-        #05020a;
+    width:min(100% - 48px,1000px);
+    margin:0 auto;
 }
 
 nav{
-    max-width:950px;
-    margin:auto;
+    min-height:96px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
 
 .logo{
-    color:#c084fc;
-    font-size:24px;
-    font-weight:bold;
+    color:var(--purple);
+    font-size:26px;
+    font-weight:800;
     text-decoration:none;
+    letter-spacing:-.5px;
 }
 
 .nav-links{
     display:flex;
-    gap:22px;
+    align-items:center;
+    gap:24px;
 }
 
 .nav-links a{
-    color:white;
+    color:var(--text);
     text-decoration:none;
-    transition:.2s;
+    transition:color .2s ease;
 }
 
 .nav-links a:hover{
-    color:#c084fc;
+    color:var(--purple);
 }
 
 .article{
-    max-width:950px;
-    margin:80px auto 40px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(192,132,252,.25);
-    border-radius:18px;
-    padding:38px;
-    backdrop-filter:blur(8px);
+    margin:42px 0 48px;
+    overflow:hidden;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:22px;
+    box-shadow:0 24px 80px rgba(0,0,0,.28);
+    backdrop-filter:blur(10px);
 }
 
-.tag{
-    color:#c084fc;
-    font-weight:bold;
-    letter-spacing:2px;
-    font-size:14px;
+.article-header{
+    padding:54px 54px 46px;
+    border-bottom:1px solid var(--border);
+    background:
+        linear-gradient(135deg,rgba(147,51,234,.15),transparent 55%),
+        rgba(0,0,0,.1);
+}
+
+.eyebrow{
     margin-bottom:18px;
+    color:var(--purple);
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:2px;
 }
 
 h1{
-    font-size:48px;
-    line-height:1.1;
-    margin-bottom:16px;
+    max-width:760px;
+    margin-bottom:18px;
+    font-size:clamp(44px,7vw,72px);
+    line-height:1;
+    letter-spacing:-2.5px;
 }
 
 .subtitle{
-    color:#d8b4fe;
-    font-size:23px;
-    line-height:1.5;
-    margin-bottom:30px;
-    font-weight:bold;
+    max-width:760px;
+    color:var(--purple-light);
+    font-size:clamp(20px,3vw,27px);
+    font-weight:700;
+    line-height:1.4;
 }
 
 .article-meta{
     display:flex;
     flex-wrap:wrap;
-    gap:12px;
-    margin-bottom:35px;
+    gap:10px;
+    margin-top:28px;
 }
 
 .meta-item{
-    background:rgba(147,51,234,.13);
-    border:1px solid rgba(192,132,252,.2);
-    color:#ddd6fe;
     padding:8px 13px;
+    color:#ddd6fe;
+    font-size:13px;
+    border:1px solid var(--border);
     border-radius:999px;
-    font-size:14px;
+    background:rgba(147,51,234,.1);
+}
+
+.article-body{
+    padding:26px 54px 58px;
+}
+
+.article-section{
+    padding-top:30px;
 }
 
 h2{
-    margin-top:42px;
-    margin-bottom:14px;
-    font-size:28px;
-}
-
-p,
-li{
-    color:#ddd6fe;
-    font-size:18px;
-    line-height:1.75;
+    margin:0 0 18px;
+    color:var(--text);
+    font-size:30px;
+    line-height:1.2;
+    letter-spacing:-.5px;
 }
 
 p{
     margin-bottom:20px;
-}
-
-ul,
-ol{
-    margin-left:24px;
-    margin-top:12px;
-    margin-bottom:22px;
-}
-
-li{
-    margin-bottom:8px;
-}
-
-a{
-    color:#c084fc;
-}
-
-a:hover{
-    color:#e9d5ff;
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.78;
 }
 
 strong{
-    color:#f3e8ff;
+    color:var(--text);
 }
 
-code{
-    background:rgba(0,0,0,.45);
-    color:#f3e8ff;
-    padding:3px 7px;
-    border-radius:6px;
-}
-
-.highlight-box{
-    margin:28px 0;
-    padding:22px;
-    border-left:4px solid #9333ea;
-    background:rgba(147,51,234,.12);
-    border-radius:10px;
-}
-
-.highlight-box p:last-child{
-    margin-bottom:0;
+.warning-box,
+.highlight-box,
+.quote-box{
+    margin:8px 0 20px;
+    padding:23px 25px;
+    border-radius:12px;
 }
 
 .warning-box{
-    margin:28px 0;
-    padding:22px;
     border:1px solid rgba(251,191,36,.3);
-    border-left:4px solid #fbbf24;
+    border-left:4px solid var(--warning);
     background:rgba(251,191,36,.07);
-    border-radius:10px;
 }
 
 .warning-title{
-    color:#fde68a;
-    font-size:16px;
-    font-weight:bold;
-    letter-spacing:1px;
     margin-bottom:10px;
+    color:#fde68a;
+    font-size:13px;
+    font-weight:800;
+    letter-spacing:1.5px;
 }
 
-.warning-box p:last-child{
+.warning-box p:last-child,
+.highlight-box p:last-child,
+.quote-box p:last-child{
     margin-bottom:0;
 }
 
+.highlight-box{
+    border-left:4px solid var(--purple-dark);
+    background:rgba(147,51,234,.11);
+}
+
 .quote-box{
-    margin:28px 0;
-    padding:24px;
-    background:rgba(0,0,0,.25);
-    border:1px solid rgba(192,132,252,.2);
-    border-radius:14px;
+    text-align:center;
+    border:1px solid var(--border);
+    background:var(--surface-dark);
 }
 
 .quote-box p{
-    color:#f3e8ff;
-    font-size:21px;
-    font-weight:bold;
-    margin:0;
+    color:var(--text);
+    font-size:22px;
+    font-weight:700;
+}
+
+.section-divider{
+    width:100%;
+    height:1px;
+    margin-top:22px;
+    background:linear-gradient(90deg,var(--border),transparent);
 }
 
 .resource-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:16px;
-    margin-top:20px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:15px;
+    margin:10px 0 22px;
 }
 
 .resource-card{
-    display:block;
-    padding:20px;
-    border-radius:14px;
-    background:rgba(0,0,0,.28);
-    border:1px solid rgba(192,132,252,.22);
-    color:white;
+    min-height:142px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:18px;
+    padding:21px;
+    color:var(--text);
     text-decoration:none;
-    transition:
-        transform .2s,
-        border-color .2s,
-        background .2s;
+    border:1px solid var(--border);
+    border-radius:14px;
+    background:rgba(0,0,0,.25);
+    transition:transform .2s ease,border-color .2s ease,background .2s ease;
 }
 
 .resource-card:hover{
+    color:var(--text);
     transform:translateY(-3px);
-    border-color:#c084fc;
-    background:rgba(147,51,234,.15);
+    border-color:var(--purple);
+    background:rgba(147,51,234,.13);
 }
 
-.resource-label{
+.resource-type{
     color:#a78bfa;
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:1.5px;
-    margin-bottom:8px;
+    font-size:11px;
+    font-weight:800;
+    letter-spacing:1.4px;
 }
 
 .resource-title{
-    color:#f3e8ff;
+    margin-top:8px;
     font-size:18px;
-    font-weight:bold;
-    margin-bottom:8px;
+    font-weight:700;
+    line-height:1.35;
 }
 
-.resource-description{
+.resource-link{
     color:#c4b5fd;
-    font-size:15px;
-    line-height:1.5;
+    font-size:13px;
 }
 
-.takeaway-list{
-    list-style:none;
-    margin-left:0;
+.resource-card:hover .resource-link{
+    color:var(--purple-light);
 }
 
-.takeaway-list li{
-    position:relative;
-    padding:14px 16px 14px 44px;
-    margin-bottom:12px;
-    background:rgba(0,0,0,.22);
-    border:1px solid rgba(192,132,252,.15);
-    border-radius:10px;
-}
-
-.takeaway-list li::before{
-    content:"✓";
-    position:absolute;
-    left:17px;
-    top:14px;
-    color:#c084fc;
-    font-weight:bold;
+.single-resource{
+    max-width:440px;
 }
 
 footer{
-    max-width:950px;
-    margin:50px auto 0;
-    padding-top:25px;
-    border-top:1px solid rgba(192,132,252,.2);
+    padding:28px 0 42px;
     display:flex;
     justify-content:space-between;
+    gap:24px;
     color:#a78bfa;
+    border-top:1px solid var(--border);
 }
 
 footer a{
-    color:#c084fc;
     text-decoration:none;
 }
 
-footer a:hover{
-    text-decoration:underline;
-}
-
-@media(max-width:800px){
+@media(max-width:700px){
     .page{
-        padding:25px;
+        width:min(100% - 28px,1000px);
+    }
+
+    nav{
+        min-height:78px;
+    }
+
+    .nav-links a:first-child{
+        display:none;
     }
 
     .article{
-        padding:26px;
-        margin-top:50px;
+        margin-top:24px;
+        border-radius:17px;
+    }
+
+    .article-header{
+        padding:38px 25px 34px;
+    }
+
+    .article-body{
+        padding:18px 25px 40px;
     }
 
     h1{
-        font-size:36px;
+        letter-spacing:-1.8px;
     }
 
     h2{
-        font-size:24px;
+        font-size:26px;
     }
 
-    .subtitle{
-        font-size:20px;
-    }
-
-    .nav-links{
-        display:none;
+    p{
+        font-size:17px;
+        line-height:1.72;
     }
 
     .resource-grid{
         grid-template-columns:1fr;
     }
 
+    .single-resource{
+        max-width:none;
+    }
+
     footer{
         flex-direction:column;
-        gap:12px;
+        align-items:center;
         text-align:center;
     }
 }
 
-@media(max-width:500px){
-    .page{
-        padding:18px;
+@media(prefers-reduced-motion:reduce){
+    html{
+        scroll-behavior:auto;
     }
 
-    .article{
-        padding:22px;
-    }
-
-    h1{
-        font-size:32px;
-    }
-
-    p,
-    li{
-        font-size:17px;
+    .resource-card{
+        transition:none;
     }
 }
 </style>
 </head>
 
 <body>
-
 <div class="page">
 
-<nav>
-    <a class="logo" href="/">BrideSec</a>
+<nav aria-label="Main navigation">
+    <a class="logo" href="../index.html">BrideSec</a>
 
     <div class="nav-links">
-        <a href="/">Home</a>
-        <a
-            href="https://www.linkedin.com/in/tyler-jw-mcbride/"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            LinkedIn
-        </a>
+        <a href="../index.html">Home</a>
+        <a href="https://www.linkedin.com/in/tyler-jw-mcbride/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
 </nav>
 
 <main>
-
 <article class="article">
 
-<div class="tag">CERTIFICATION • COMPTIA • CYSA+</div>
+<header class="article-header">
+    <div class="eyebrow">CERTIFICATION · COMPTIA · CYSA+</div>
+    <h1>Passing CySA+</h1>
+    <div class="subtitle">By only studying CVSS scoring details and 70 practice test questions.</div>
 
-<h1>Passing CySA+</h1>
-
-<div class="subtitle">
-    By only studying CVSS scoring details and 70 practice test questions.
-</div>
-
-<div class="article-meta">
-    <div class="meta-item">CompTIA CySA+</div>
-    <div class="meta-item">Cybersecurity</div>
-    <div class="meta-item">Exam Experience</div>
-</div>
-
-<div class="warning-box">
-    <div class="warning-title">THERE ARE NO SHORTCUTS</div>
-
-    <p>
-        Now I know you are reading this and thinking no way is that all and you would be
-        100% correct. There are no shortcuts to knowledge you have to put in the time and
-        effort. What worked for me probably will not work for most people. This is true in
-        anything you do in life you can only try your best to set yourself up for success.
-    </p>
-</div>
-
-<h2>A Little About Me</h2>
-
-<p>
-    I want to tell a little story about me and what I am doing right now. I am a recent
-    college graduate that is all around experienced and I would say was doing better then
-    the typical student. I had an internship, certifications, performing well in classes,
-    and winning cyber competitions on a national level.
-</p>
-
-<p>
-    Yet, I am stuck in a situation most recent graduates are stuck in… this industry is
-    competitive and tough. I can not get interviews or any job offers. I have probably
-    applied to around 200 jobs now and have received 2 interviews, one was with an internal
-    recommendation where I made through 4 rounds of interviews to get beat out by a guy
-    with years of real world experience and projects in cloud detections.
-</p>
-
-<p>
-    This has made me realize that it is not just recent graduates we are competing with,
-    we are against seasoned professionals that are looking for new opportunities at a
-    bigger company or job role change.
-</p>
-
-<div class="quote-box">
-    <p>
-        How do we combat this? Honestly…. I have no earthly idea.
-    </p>
-</div>
-
-<p>
-    The only thing we can do is grow our background, make more projects, practice soft
-    skills, and not fall behind.
-</p>
-
-<h2>Preparing for CySA+</h2>
-
-<p>
-    Now back to the meat and taters of this section taking the CySA+. Leading up to it I
-    had just passed another more intense certification GIAC’s ai security automation
-    engineer (GASAE) about 2 weeks ago.
-</p>
-
-<p>
-    So my mind was tired of studying and a bit burnt out but I had won the CompTIA voucher
-    that was expiring soon from a competition, SummitCTF, a great competition put on by
-    Virginia Tech’s Cyber club.
-</p>
-
-<a
-    class="resource-card"
-    href="https://summitctf.org/"
-    target="_blank"
-    rel="noopener noreferrer"
->
-    <div class="resource-label">CYBER COMPETITION</div>
-    <div class="resource-title">SummitCTF</div>
-    <div class="resource-description">
-        A cybersecurity competition put on by Virginia Tech’s Cyber Club.
+    <div class="article-meta">
+        <span class="meta-item">Exam Experience</span>
+        <span class="meta-item">CVSS</span>
+        <span class="meta-item">Incident Response</span>
     </div>
-</a>
+</header>
 
-<div class="warning-box">
-    <div class="warning-title">DO NOT COPY THIS APPROACH BLINDLY</div>
+<div class="article-body">
 
-    <p>
-        So I was not looking to put forward as much effort in studying as I would most
-        exams. Normally, I would say this is a big NO NO…. Do not treat an opportunity
-        like this, if you are able to put all your effort in.
-    </p>
+<section class="article-section" aria-labelledby="introduction">
+    <h2 id="introduction">No Shortcuts to Knowledge</h2>
 
-    <p>
-        Now life happens, I personally had a few things leading up to the exam that took
-        precedence but ultimately I could have prepared much better.
-    </p>
-</div>
+    <div class="warning-box">
+        <div class="warning-title">A QUICK DISCLAIMER</div>
+        <p>Now I know you are reading this and thinking, <em>there's no way that's all.</em> You would be 100% correct. There are no shortcuts to knowledge—you have to put in the time and effort. What worked for me probably won't work for most people. That's true with anything in life. You can only do your best to set yourself up for success.</p>
+    </div>
 
-<p>
-    Simply put, my tactics were to find a youtube series to study and then take some
-    practice exams.
-</p>
+    <p>I want to tell a little story about where I am right now. I'm a recent college graduate who I would say is pretty well-rounded compared to the typical student. I had an internship, earned multiple certifications, performed well in my classes, and won cybersecurity competitions at the national level.</p>
 
-<p>
-    I did do this partly, but ultimately decided there was no way I would have time to
-    watch a full series on every exam topic.
-</p>
+    <p>Yet, I'm stuck in the same situation many recent graduates are facing: this industry is competitive and tough. I can't seem to get interviews or job offers. I've probably applied to around 200 jobs and have only received two interviews. One of those came from an internal recommendation, where I made it through four rounds before ultimately being beat out by someone with years of real-world experience and cloud detection engineering projects.</p>
 
-<h2>What I Focused On</h2>
+    <p>That experience made me realize that we aren't just competing against other recent graduates. We're competing against seasoned professionals looking for a larger company, higher salary, or career change.</p>
 
-<p>
-    So what did I do? I reached out to some people that I know that have already passed
-    the exam and asked what they recommended me focus on.
-</p>
+    <div class="quote-box">
+        <p>How do we combat that?<br>Honestly... I have no earthly idea.</p>
+    </div>
 
-<p>
-    They said CVSS scoring and at first I was confused… Just like the score itself but
-    then I realized that I didn’t know everything fully that went into the vectors of
-    CVSS and how to read each version.
-</p>
+    <p>The only thing we can do is continue building our backgrounds, creating projects, improving our soft skills, and making sure we don't fall behind.</p>
+</section>
 
-<div class="highlight-box">
-    <p>
-        This was a great tip to study and definitely benefitted me on the exam.
-    </p>
-</div>
+<div class="section-divider"></div>
 
-<h2>Practice Questions</h2>
+<section class="article-section" aria-labelledby="meat-and-potatoes">
+    <h2 id="meat-and-potatoes">Now Back to the Meat and Potatoes</h2>
 
-<p>
-    For practice questions I mainly used two sources. This random guy I found on youtube
-    has some great practice question videos with detailed explanations that closely
-    aligned with the exam.
-</p>
+    <p>Leading up to the CySA+, I had just passed another, much more intense certification: GIAC's AI Security Automation Engineer (GASAE), about two weeks earlier.</p>
 
-<div class="resource-grid">
+    <p>At that point my brain was honestly tired of studying and a little burnt out. Fortunately, I had won a CompTIA voucher through SummitCTF, a great competition put on by Virginia Tech's Cyber Club. The voucher was about to expire, so I needed to use it.</p>
 
-    <a
-        class="resource-card"
-        href="https://www.youtube.com/watch?v=6pX2DJU9YcE"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">YOUTUBE</div>
-        <div class="resource-title">CySA+ Practice Questions</div>
-        <div class="resource-description">
-            Practice questions with detailed explanations that closely aligned with the exam.
-        </div>
-    </a>
+    <div class="resource-grid single-resource">
+        <a class="resource-card" href="https://summitctf.org/" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">CYBERSECURITY COMPETITION</span>
+                <span class="resource-title">SummitCTF</span>
+            </span>
+            <span class="resource-link">Visit summitctf.org →</span>
+        </a>
+    </div>
 
-    <a
-        class="resource-card"
-        href="https://www.secuspark.com/exam?cert=cysa-plus"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">PRACTICE PLATFORM</div>
-        <div class="resource-title">SecuSpark CySA+ Questions</div>
-        <div class="resource-description">
-            Free CySA+ practice questions with additional paid options available.
-        </div>
-    </a>
+    <div class="warning-box">
+        <div class="warning-title">I DO NOT RECOMMEND THIS APPROACH</div>
+        <p>Because of that, I wasn't looking to put as much effort into studying as I normally would. I want to make something very clear though: <strong>I do not recommend this approach.</strong></p>
+        <p>If you have the opportunity to fully prepare for an exam, do it.</p>
+    </div>
 
-</div>
+    <p>Life just happened to get in the way for me. I had several things come up leading into the exam that took priority, and ultimately I could have prepared much better.</p>
 
-<p style="margin-top:22px;">
-    I also used this platform to do free practice questions. There is paid versions but I
-    do think the free ones helped me and if I was concerned definitely could be convinced
-    to purchase.
-</p>
+    <p>My original plan was simple: find a YouTube course and then complete some practice exams.</p>
+</section>
 
-<h2>What Actually Helped Me Pass</h2>
+<div class="section-divider"></div>
 
-<p>
-    Now ultimately what led me to passing the exam. I can tell you it wasn’t the practice
-    questions or the studying but the real world experience I have gained in the field.
-    That alone is way more valuable than a study guide.
-</p>
+<section class="article-section" aria-labelledby="studied">
+    <h2 id="studied">What I Actually Studied</h2>
 
-<div class="highlight-box">
-    <p>
-        I was prepared for the unexpected because I have molded myself into a well-rounded
-        professional. I am familiar with offensive and defensive techniques.
-    </p>
-</div>
+    <p>I partially followed that plan, but I quickly realized there was no way I was going to have enough time to watch an entire video series covering every exam objective.</p>
 
-<p>
-    I remember sets of questions on there where I may not have known the best way to
-    remediate but I sure do know how to attack it. Then I can take that attack reasoning
-    and work it around to come up with a good defensive measure.
-</p>
+    <p>So what did I do?</p>
 
-<p>
-    Same with the hands on portions of incident response. I know the attack that occurred
-    so looking at Indicators of Compromise (IOCs) you can easily form an attack chain if
-    you can reason like an attacker.
-</p>
+    <p>I reached out to several people I knew who had already passed the CySA+ and asked what they thought I should focus on.</p>
 
-<h2>My Recommendations</h2>
+    <div class="highlight-box">
+        <p>Every one of them mentioned <strong>CVSS scoring.</strong></p>
+    </div>
 
-<p>
-    I recommend going a step further then just studying and actually gain some sort of
-    applicable knowledge in defense and offensive security.
-</p>
+    <p>At first I thought they just meant memorizing severity scores, but I quickly realized I didn't fully understand everything that goes into the CVSS vectors or how to properly read each version.</p>
 
-<p>
-    I recommend HackTheBox this platform is very offensive focused but does also include
-    some blue team Sherlocks for investigations.
-</p>
+    <p>That ended up being excellent advice and definitely benefited me during the exam.</p>
+</section>
 
-<p>
-    I would also recommend knowing everything about proper procedures of handling
-    incidents along with the incident response timeline.
-</p>
+<div class="section-divider"></div>
 
-<p>
-    Finally, you should have a solid understanding of widely used security frameworks,
-    including the MITRE ATT&amp;CK Framework and the OWASP Top 10.
-</p>
+<section class="article-section" aria-labelledby="practice-questions">
+    <h2 id="practice-questions">Practice Questions</h2>
 
-<ul class="takeaway-list">
-    <li>Understand how to read CVSS vectors and scoring details.</li>
-    <li>Practice reasoning from both an attacker and defender perspective.</li>
-    <li>Learn the proper procedures and timeline for incident response.</li>
-    <li>Develop applicable offensive and defensive security experience.</li>
-    <li>Understand MITRE ATT&amp;CK and the OWASP Top 10.</li>
-</ul>
+    <p>For practice questions I mainly used two sources.</p>
 
-<h2>Training Resources</h2>
+    <p>The first was a random YouTube creator that I came across. His practice questions included detailed explanations and were surprisingly similar to the style of questions I saw on the actual exam.</p>
 
-<div class="resource-grid">
+    <p>I also used SecuSpark's free practice questions.</p>
 
-    <a
-        class="resource-card"
-        href="https://www.hackthebox.com/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">HANDS-ON TRAINING</div>
-        <div class="resource-title">Hack The Box</div>
-        <div class="resource-description">
-            Offensive security labs and blue team Sherlock investigation challenges.
-        </div>
-    </a>
+    <p>There are paid versions available, but I thought the free questions were worthwhile. If I had been more concerned going into the exam, I probably would have considered purchasing the paid version.</p>
 
-    <a
-        class="resource-card"
-        href="https://owasp.org/www-project-top-ten/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">WEB SECURITY</div>
-        <div class="resource-title">OWASP Top 10</div>
-        <div class="resource-description">
-            Learn about common and significant web application security risks.
-        </div>
-    </a>
+    <div class="resource-grid">
+        <a class="resource-card" href="https://www.youtube.com/watch?v=6pX2DJU9YcE" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">YOUTUBE</span>
+                <span class="resource-title">CySA+ Practice Questions</span>
+            </span>
+            <span class="resource-link">Watch the video →</span>
+        </a>
 
-    <a
-        class="resource-card"
-        href="https://attack.mitre.org/"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">SECURITY FRAMEWORK</div>
-        <div class="resource-title">MITRE ATT&amp;CK</div>
-        <div class="resource-description">
-            Study adversary tactics, techniques, procedures, and defensive mappings.
-        </div>
-    </a>
+        <a class="resource-card" href="https://www.secuspark.com/exam?cert=cysa-plus" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">PRACTICE EXAMS</span>
+                <span class="resource-title">SecuSpark CySA+ Questions</span>
+            </span>
+            <span class="resource-link">Visit SecuSpark →</span>
+        </a>
+    </div>
+</section>
 
-    <a
-        class="resource-card"
-        href="https://www.first.org/cvss/calculator/3.1"
-        target="_blank"
-        rel="noopener noreferrer"
-    >
-        <div class="resource-label">CVSS</div>
-        <div class="resource-title">CVSS v3.1 Calculator</div>
-        <div class="resource-description">
-            Practice reading CVSS vectors and understanding how scores are calculated.
-        </div>
-    </a>
+<div class="section-divider"></div>
+
+<section class="article-section" aria-labelledby="what-helped">
+    <h2 id="what-helped">What Actually Helped Me Pass</h2>
+
+    <p>Ultimately, what helped me pass wasn't the practice questions or the studying.</p>
+
+    <div class="highlight-box">
+        <p><strong>It was the real-world experience I've gained.</strong></p>
+        <p>That experience is far more valuable than any study guide.</p>
+    </div>
+
+    <p>I was prepared for the unexpected because I've spent years trying to become a well-rounded security professional. I'm comfortable thinking from both an offensive and defensive perspective.</p>
+
+    <p>I remember several questions where I wasn't completely sure what the best remediation strategy was, but I knew exactly how I would attack the system. Once I understood the attacker's thought process, I could work backwards and determine an effective defensive measure.</p>
+
+    <p>The same idea applied to the incident response questions. If you understand how an attacker operates, you can often look at the Indicators of Compromise (IOCs) and mentally reconstruct the attack chain.</p>
+
+    <p>That mindset helped me answer several questions that I otherwise might have struggled with.</p>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="article-section" aria-labelledby="recommendation">
+    <h2 id="recommendation">My Recommendation</h2>
+
+    <p>I recommend going a step further than simply studying for the exam.</p>
+
+    <div class="highlight-box">
+        <p><strong>Build applicable experience in both offensive and defensive security.</strong></p>
+    </div>
+
+    <p>Hack The Box is one of my favorite platforms for this. While it's primarily focused on offensive security, it also offers Blue Team Sherlock investigations that are great practice for incident response.</p>
+
+    <p>I would also recommend becoming very familiar with incident handling procedures and the incident response lifecycle.</p>
+
+    <p>Finally, you should have a solid understanding of widely used security frameworks, including the MITRE ATT&amp;CK Framework and the OWASP Top 10.</p>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="article-section" aria-labelledby="resources">
+    <h2 id="resources">Training Resources</h2>
+
+    <div class="resource-grid">
+        <a class="resource-card" href="https://www.hackthebox.com/" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">HANDS-ON TRAINING</span>
+                <span class="resource-title">Hack The Box</span>
+            </span>
+            <span class="resource-link">Visit Hack The Box →</span>
+        </a>
+
+        <a class="resource-card" href="https://owasp.org/www-project-top-ten/" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">WEB SECURITY</span>
+                <span class="resource-title">OWASP Top 10</span>
+            </span>
+            <span class="resource-link">View the OWASP Top 10 →</span>
+        </a>
+
+        <a class="resource-card" href="https://attack.mitre.org/" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">SECURITY FRAMEWORK</span>
+                <span class="resource-title">MITRE ATT&amp;CK</span>
+            </span>
+            <span class="resource-link">Explore MITRE ATT&amp;CK →</span>
+        </a>
+
+        <a class="resource-card" href="https://www.first.org/cvss/calculator/3.1" target="_blank" rel="noopener noreferrer">
+            <span>
+                <span class="resource-type">CVSS</span>
+                <span class="resource-title">CVSS v3.1 Calculator</span>
+            </span>
+            <span class="resource-link">Open the calculator →</span>
+        </a>
+    </div>
+</section>
 
 </div>
-
 </article>
-
 </main>
 
 <footer id="contact">
     <div>© 2026 BrideSec</div>
-
-    <div>
-        <a href="mailto:contact@bridesec.com">
-            contact@bridesec.com
-        </a>
-    </div>
+    <div><a href="mailto:contact@bridesec.com">contact@bridesec.com</a></div>
 </footer>
 
 </div>
-
 </body>
 </html>
