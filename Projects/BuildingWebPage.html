@@ -4,195 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
 <title>Building a Website with GitHub Pages | BrideSec</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#05020a;
-    color:white;
-}
-
-.page{
-    min-height:100vh;
-    padding:40px;
-    background:
-        radial-gradient(circle at top right,#6d28d9,transparent 35%),
-        radial-gradient(circle at bottom left,#4c1d95,transparent 30%),
-        #05020a;
-}
-
-nav{
-    max-width:950px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    color:#c084fc;
-    font-size:24px;
-    font-weight:bold;
-    text-decoration:none;
-}
-
-.nav-links{
-    display:flex;
-    gap:22px;
-}
-
-.nav-links a{
-    color:white;
-    text-decoration:none;
-    transition:.2s;
-}
-
-.nav-links a:hover{
-    color:#c084fc;
-}
-
-.article{
-    max-width:950px;
-    margin:80px auto 40px;
-    background:rgba(255,255,255,.06);
-    border:1px solid rgba(192,132,252,.25);
-    border-radius:18px;
-    padding:38px;
-}
-
-.tag{
-    color:#c084fc;
-    font-weight:bold;
-    letter-spacing:2px;
-    font-size:14px;
-    margin-bottom:18px;
-}
-
-h1{
-    font-size:48px;
-    line-height:1.1;
-    margin-bottom:20px;
-}
-
-h2{
-    margin-top:40px;
-    margin-bottom:14px;
-    font-size:28px;
-}
-
-p,
-li{
-    color:#ddd6fe;
-    font-size:18px;
-    line-height:1.7;
-}
-
-ul,
-ol{
-    margin-left:24px;
-    margin-top:12px;
-}
-
-li{
-    margin-bottom:8px;
-}
-
-a{
-    color:#c084fc;
-}
-
-code{
-    background:rgba(0,0,0,.45);
-    color:#f3e8ff;
-    padding:3px 7px;
-    border-radius:6px;
-}
-
-pre{
-    background:rgba(0,0,0,.45);
-    color:#f3e8ff;
-    padding:16px;
-    border-radius:12px;
-    overflow-x:auto;
-    margin:16px 0;
-}
-
-.note-box{
-    margin-top:20px;
-    padding:18px;
-    border-left:4px solid #9333ea;
-    background:rgba(147,51,234,.12);
-    border-radius:10px;
-}
-
-footer{
-    max-width:950px;
-    margin:50px auto 0;
-    padding-top:25px;
-    border-top:1px solid rgba(192,132,252,.2);
-    display:flex;
-    justify-content:space-between;
-    color:#a78bfa;
-}
-
-footer a{
-    color:#c084fc;
-    text-decoration:none;
-}
-
-footer a:hover{
-    text-decoration:underline;
-}
-
-@media(max-width:800px){
-    .page{
-        padding:25px;
-    }
-
-    .article{
-        padding:26px;
-        margin-top:50px;
-    }
-
-    h1{
-        font-size:36px;
-    }
-
-    h2{
-        font-size:24px;
-    }
-
-    .nav-links{
-        display:none;
-    }
-
-    footer{
-        flex-direction:column;
-        gap:12px;
-        text-align:center;
-    }
-}
-</style>
+<link rel="stylesheet" href="../styles.css">
 </head>
 
-<body>
+<body class="article-page">
 
 <div class="page">
 
 <nav>
-    <a class="logo" href="/">BrideSec</a>
+    <a class="site-brand" href="../index.html" aria-label="BrideSec home">
+    <img class="site-brand-icon" src="../assets/bridesec-logo-96.png" alt="">
+    <span class="site-brand-name">BrideSec</span>
+</a>
 
     <div class="nav-links">
         <a href="/">Home</a>
